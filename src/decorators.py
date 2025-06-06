@@ -21,7 +21,7 @@ def decorator_search(func: Callable) -> Callable:
     # noinspection PyTypeChecker
     def wrapper(*args: Any, **kwargs: Any) -> Any:
         result = func(*args, **kwargs)
-        with open("search.json", "w", encoding="utf-8") as f:
+        with open('search.json', "w", encoding="utf-8") as f:
             json.dump(result, f, ensure_ascii=False, indent=4)
         return result
 
