@@ -1,6 +1,6 @@
 import datetime
 import logging
-from datetime import datetime
+
 
 logger = logging.getLogger("views.log")
 file_handler = logging.FileHandler("views.log", "w")
