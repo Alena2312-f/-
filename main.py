@@ -6,7 +6,7 @@ from src.utils import currency_rates, for_each_card, get_price_stock, greetings,
 from src.views import filter_by_date
 
 logger = logging.getLogger("utils.log")
-file_handler = logging.FileHandler("main.log", "w")
+file_handler = logging.FileHandler("src/main.log", "w")
 file_formatter = logging.Formatter("%(asctime)s %(levelname)s: %(message)s")
 file_handler.setFormatter(file_formatter)
 logger.addHandler(file_handler)
