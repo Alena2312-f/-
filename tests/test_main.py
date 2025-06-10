@@ -1,6 +1,6 @@
 from unittest.mock import patch
 
-from src.mypy import main
+from src.main import main
 
 
 @patch("requests.get")
