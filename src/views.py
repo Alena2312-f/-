@@ -25,9 +25,11 @@ def main(datetime_str: str) -> str:
 
         # 1. Загрузка данных
         base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-        file_path = os.path.join(base_dir, "data", "operations.xlsx")
-
+        file_path= os.path.join(base_dir, "data", "operations.xlsx")
         df = pd.read_excel(file_path)
+        #file_path = os.path.join( "../data/operations.xlsx")
+        #df = pd.read_excel(file_path)
+
 
         # 2. Преобразование столбцов с датами
         df["Дата операции"] = pd.to_datetime(df["Дата операции"], dayfirst=True)
@@ -40,7 +42,9 @@ def main(datetime_str: str) -> str:
         filtered_df = filter_transactions_by_month(df, input_datetime)
 
         # 5. Загрузка настроек пользователя
-        with open("../user_settings.json", "r") as f:
+        base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        file_path = os.path.join(base_dir, "data", "user_settings.json")
+        with open(file_path, "r") as f:
             user_settings = json.load(f)
         user_currencies = user_settings["user_currencies"]
         user_stocks = user_settings["user_stocks"]
