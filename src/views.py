@@ -25,11 +25,10 @@ def main(datetime_str: str) -> str:
 
         # 1. Загрузка данных
         base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-        file_path= os.path.join(base_dir, "data", "operations.xlsx")
+        file_path = os.path.join(base_dir, "data", "operations.xlsx")
         df = pd.read_excel(file_path)
-        #file_path = os.path.join( "../data/operations.xlsx")
-        #df = pd.read_excel(file_path)
-
+        # file_path = os.path.join( "../data/operations.xlsx")
+        # df = pd.read_excel(file_path)
 
         # 2. Преобразование столбцов с датами
         df["Дата операции"] = pd.to_datetime(df["Дата операции"], dayfirst=True)

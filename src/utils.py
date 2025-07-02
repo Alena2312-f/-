@@ -122,3 +122,21 @@ def filter_transactions_by_month(df: pd.DataFrame, date: datetime) -> pd.DataFra
     """
     start_of_month = date.replace(day=1)
     return df[(df["Дата операции"] >= start_of_month) & (df["Дата операции"] <= date)]
+
+
+def read_excel(path_file: str) -> list[dict]:
+    """Функция читает .xlsx файл и возвращает список словарей"""
+    df = pd.read_excel(path_file)
+    result = df.apply(
+        lambda row: {
+            "Дата платежа": row["Дата платежа"],
+            "Статус": row["Статус"],
+            "Сумма платежа": row["Сумма платежа"],
+            "Валюта платежа": row["Валюта платежа"],
+            "Категория": row["Категория"],
+            "Описание": row["Описание"],
+            "Номер карты": row["Номер карты"],
+        },
+        axis=1,
+    ).tolist()
+    return result

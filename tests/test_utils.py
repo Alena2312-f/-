@@ -9,8 +9,14 @@ import pytest
 from dotenv import load_dotenv
 from pandas import DataFrame
 
-from src.utils import (filter_transactions_by_month, get_card_data, get_currency_rates, get_greeting, get_stock_data,
-                       get_top_transactions)
+from src.utils import (
+    filter_transactions_by_month,
+    get_card_data,
+    get_currency_rates,
+    get_greeting,
+    get_stock_data,
+    get_top_transactions,
+)
 
 file_path = str(Path(__file__).resolve().parent.parent) + "\\data\\operations.xlsx"
 load_dotenv()
@@ -258,13 +264,13 @@ def test_filter_transactions_by_month_date_at_end_of_month(sample_dataframe_by_m
 def test_currency_rates(mock_get):
     """Тестирование функции вывода курса валют"""
     mock_response_usd = Mock()
-    mock_response_usd.json.return_value = {"conversion_rates": {"RUB": 78.55}}
+    mock_response_usd.json.return_value = {"conversion_rates": {"RUB": 78.48}}
     mock_response_eur = Mock()
-    mock_response_eur.json.return_value = {"conversion_rates": {"RUB": 92.06}}
+    mock_response_eur.json.return_value = {"conversion_rates": {"RUB": 92.66}}
     mock_get.side_effect = [mock_response_usd, mock_response_eur]
 
     result = get_currency_rates(["USD", "EUR"])
-    expected = [{"currency": "USD", "rate": 78.55}, {"currency": "EUR", "rate": 92.06}]
+    expected = [{"currency": "USD", "rate": 78.48}, {"currency": "EUR", "rate": 92.66}]
     assert result == expected
 
 

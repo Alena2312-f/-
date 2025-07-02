@@ -1,5 +1,4 @@
 from datetime import datetime, time
-from typing import Any, Dict, List
 
 import pandas as pd
 import pytest
@@ -163,6 +162,7 @@ def sample_dataframe_by_month() -> pd.DataFrame:
         "Категория": ["A", "B", "A", "B", "A", "B"],
     }
     return pd.DataFrame(data)
+
 
 @pytest.fixture
 def datetime_str() -> str:
